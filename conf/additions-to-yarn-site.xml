@@ -1,0 +1,45 @@
+<property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>8192</value>
+        <description>Maximum limit of node manager memory </description>
+</property>
+<property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>2048</value>
+        <description>Minimum limit of memory to allocate to each container request at the Resource Manager.</description>
+</property>
+<property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>8192</value>
+        <description>Maximum limit of memory to allocate to each container request at the Resource Manager.</description>
+</property>
+<property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>2048</value>
+        <description>Minimum limit of memory to allocate to each map request at the Resource Manager.</description>
+</property>
+<property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>8192</value>
+        <description>Maximum limit of memory to allocate to each reduce container request at the Resource Manager.</description>
+</property>
+<property>
+        <name>mapreduce.map.java.opts</name>
+        <value>-Xmx1600m</value>
+        <description> map reduce, map java opts.</description>
+</property>
+<property>
+        <name>mapreduce.reduce.java.opts</name>
+        <value>-Xmx3200m</value>
+        <description> map reduce, reduce java opts.</description>
+</property>
+<property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>4000</value>
+        <description> yarn app mapreduce app am</description>
+</property>
+<property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx6000m</value>
+        <description> yarn app mapreduce command opts </description>
+</property>

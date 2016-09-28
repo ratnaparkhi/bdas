@@ -1,0 +1,19 @@
+Notes:
+
+Sept 21, 2016
+-------------
+i) data generated on 6 node cluster (1 namenode, 5 datanodes) using 
+nohup sh -c './bigBench dataGen -m 8 -f 500 -U > dg1.out' &
+
+[-f 500 means a scale factor of 500 and so db size is roughly 500GB] 
+
+2) Hive metastore populated using 
+./bigBench populateMetastore -U
+
+3) Queries were run using hive cli
+hive -database bigbench -f $HOME/benchQ.sql > $HOME/benchQ500.out 2>&1
+
+4) benchQ500.out has the execution details. 
+
+5) Hive is set with all default configuration
+
