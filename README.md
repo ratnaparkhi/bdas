@@ -76,6 +76,10 @@ In case of Hive, spark-sql was used to improve performance. spark-sql works with
 ### Redshift 
 Two queries (Customer purchase behavior analysis and Market basket analysis) were analyzed further using 'Explain sql-statement'. It gives the query plan of execution. DS_BCAST_BOTH step was noted due to join on web_clickstreams & item in case of query1. This results in data movement (to compute nodes) during query exeuction, and is an expensive step. In order to avoid this run-time data movement, Redshift recomments usage of 'distkey' (KEY style of distribution). Hence item_sk field is defined as 'distkey' on all the three tables item, store_sales and web_clickstreams. Once, distkey is defined, Redshit, during data load operation, co-locates the rows with matching values of distkey (item_sk) in this case. So item, store_sales rows with matching item_sk and item, web_clickstreams rows with matching item_sk are located together on compute nodes during data load. At run time when a query joins store_sales, item on item_sk, now, no data movement happens. 
 
+It should be noted that only one disteky can be defined per table, and it results in increased load time. When item_sk was defined as distkey on three tables - item, web_sales and web_clickstreams, (i) for 50 GB dataset load time increased 42 minutes to 50 minutes and 
+(ii) for 500 GB dataset load time increased from 8 hours 25 minutes to 11 hours.
+
+
 
 
 
