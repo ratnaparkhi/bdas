@@ -104,8 +104,19 @@ Redshift performed much better with 'out of the box' setup as well as with bit o
 
 With this in mind following use cases are identified. 
 
-| If requirements are:                      | Then use:  | Examples include:                               |
-| ------------------------------------------|------------|-------------------------------------------------|
+| If requirements are:                                  | Then use:  | Examples include:                               |
+| ------------------------------------------------------|------------|-------------------------------------------------|
+| Ease of use, low mainteance, high performance         | Redshift   | Companies with SaaS offerings, most startups    | 
+| scalability in TB range                               |            |                                                 |
+| Replacement of traditional DW platform to move to     | Redshift   | Large enterprises Finra, NTT docomo             | 
+| cloud, good price performance, data in TB range       |            |                                                 |
+| Massive amount data (many PBs), no vendor lock-in     | Hive       | Facebook, Sears and companies with existing     | 
+| in-house data due to regulatory reasons               |            | big data infrastructure and staff               |
+
+
+
+
+
 
 
 
