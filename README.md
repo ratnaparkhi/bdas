@@ -104,7 +104,8 @@ Redshift performed much better with 'out of the box' setup as well as with bit o
 
 With this in mind following use cases are identified. 
 
-
+| If requirements are:                      | Then use:  | Examples include:                               |
+| ------------------------------------------|------------|-------------------------------------------------|
 
 
 
