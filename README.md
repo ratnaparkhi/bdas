@@ -49,21 +49,21 @@ The exeuction time in seconds for each of the above five queries is listed below
 
 | Q#   | Hive (Seconds) | Redshift (Seconds) |
 | -----| ---------------|--------------------|
-| 1    | 691            | 4.69               |
-| 2    | 301            | 3.00               |
-| 3    | 659            | 9.01               |
-| 4    | 612            | 3.66               |
-| 5    | 346            | 4.15               |
+| 1    | 301            | 3.00               |
+| 2    | 346            | 4.15               |
+| 3    | 691            | 4.69               |
+| 4    | 659            | 9.01               |
+| 5    | 612            | 3.66               |
 
 ### Dataset 500 GB
 
 | Q#   | Hive (Seconds) | Redshift (Seconds) |
 | -----| ---------------|--------------------|
-| 1    | 4701           |  4.71              |
-| 2    | 2215           | 19.18              |
-| 3    | 4285           | 14.52              |
-| 4    | 4563           |  8.12              |
-| 5    | 1639           | 22.52              |
+| 1    | 2215           | 19.18              |
+| 2    | 1639           | 22.52              |
+| 3    | 4701           |  4.71              |
+| 4    | 4285           | 14.52              |
+| 5    | 4563           |  8.12              |
 
 
 For both datasets Redshift performed much better, compared to Hive, and it is due the query execution engines. Redshift is optimized for analytics workload. Redshift query engine generates C++ code, consisting of steps, segments and streams, to be executed by each compute node. In case of Hive, each query, potentially, results in multiple map-reduce jobs. Each map-reduce job spawns jvm and this results in significantly reduced execution performance. 
