@@ -96,15 +96,17 @@ It should be noted that only one disteky can be defined per table, and it result
 | 2    | 1639           | 22.52              |  729 (down 56%)                      | 13.95 (down 38%)           | 
 
 
-
-
-
-
-
-
-
-
-
 ## Conclusions
+
+Redshift performed much better with 'out of the box' setup as well as with bit of performance tuning. Redshift is easy to setup and to kickstart the datawarehouse. However, certain limitations and design issues need to be mentioned. 
+(i) Data size and number nodes - Redshift supports upto 2 PB of data storage with max number of 128 compute nodes in the cluster. 
+(ii) Distribution style (KEY using distkeys, EVEN (default) or ALL) needs to decided before loading the data for optimal join performance. Only one distkey per table is allowed. Hence, queries have to be anticipated. Otherwise, ALL style of distribution is recommended (if needed). ALL style of distribution results in data duplication on all compute nodes for the particular table at load time. 
+
+With this in mind following use cases are identified. 
+
+
+
+
+
 
 
