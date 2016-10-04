@@ -79,6 +79,14 @@ Two queries (Customer purchase behavior analysis and Market basket analysis) wer
 It should be noted that only one disteky can be defined per table, and it results in increased load time. When item_sk was defined as distkey on three tables - item, web_sales and web_clickstreams, (i) for 50 GB dataset load time increased 42 minutes to 50 minutes and 
 (ii) for 500 GB dataset load time increased from 8 hours 25 minutes to 11 hours.
 
+### Performance improvement after using spark-sql and diskey are shown below
+
+### Dataset 50 GB
+
+| Q#   | Hive (Seconds) | Redshift (Seconds) | spark-sql w/Hive metastore | Redshift w/distkey     |
+| -----| ---------------|--------------------|----------------------------| -----------------------|
+| 1    | 301            | 3.00               |
+| 2    | 346            | 4.15               |
 
 
 
