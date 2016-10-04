@@ -3,7 +3,7 @@
 [Author: Prashant Ratnaparkhi] 
 
 ## Overview
-Comparison of Hive and Redshift is done by measuring the performance of certain queries against both systems. Schema, queries and data population mechanism specifed in Transacation Processing Council Bigbench (TPC-BB) benchmark. The queries include real-life analytics scenarios such as - identifying the customers who view online and then purchase in store or identifying the products sold together frequently. The dataset was scaled from 50GB to 500GB. 
+Comparison of Hive and Redshift is done by measuring the performance of certain queries against both systems. Schema, queries and data population mechanism specifed in Transacation Processing Council Bigbench (TPC-BB) benchmark, is used. The queries include real-life analytics scenarios such as - identifying the customers who view online and then purchase in store or identifying the products sold together frequently. The dataset was scaled from 50GB to 500GB. 
 
 
 ## System Setup
@@ -16,11 +16,7 @@ Comparison of Hive and Redshift is done by measuring the performance of certain 
 | Load Data @50  GB: 35 Minutes                      | Load Data @50  GB: 42 Minutes                                |
 | Load Data @500 GB: 3 Hours, 33 Minutes             | Load Data @500 GB: 8 Hours, 25 Minutes                       |
 
-
 Load Data means populating metastore for Hive & copying data from S3 in case of RedShift.  
-
-With three tables (store_sales, item, web_clickstream using distkey & sortkey, the ‘Load Data’ time increased to approx. 50 Min & 11 Hours respectively for Redshift.
-
 
 ## Queries
 The following queries were executed against both systems with out of the box setup.
