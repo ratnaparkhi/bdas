@@ -88,6 +88,14 @@ It should be noted that only one disteky can be defined per table, and it result
 | 1    | 301            | 3.00               | 203 (down 33%)                       | 3.00 (no change)            |
 | 2    | 346            | 4.15               |  79 (down 77%)                       | 2.25 (down 46% )            | 
 
+### Dataset 500 GB
+
+| Q#   | Hive (Seconds) | Redshift (Seconds) | spark-sql w/Hive metastore  (seconds)| Redshift w/distkey (seconds)|
+| -----| ---------------|--------------------|--------------------------------------| ----------------------------|
+| 1    | 2215           | 19.18              | 1901 (down 14%)                      | 14.86 (down 22%)            |
+| 2    | 1639           | 22.52              |  729 (down 56%)                      | 13.95 (down 38%)           | 
+
+
 
 
 
