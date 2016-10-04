@@ -23,8 +23,62 @@ With three tables (store_sales, item, web_clickstream using distkey & sortkey, t
 
 
 ## Queries
+The following queries were executed against both systems with out of the box setup.
 
-## Performance results
+| Q#   | Description                                                                                                 |
+| -----| ------------------------------------------------------------------------------------------------------------|
+| 1    |Customer Purchase Behavior Analysis: Find all customers who viewed items of a given category on the web in a |
+|      |given month and year that was followed by an in-store purchase of an item from the same category in the next |
+|      |three consecutive months.                                                                                    |
+| 2    |Market Basket Analysis: What are the items sold together frequently (more that 50 times), in certain store,  |
+|      |within specified categories?                                                                                 |
+| 3    |Customer Demographics and Sales Analysis: What is the Aggregate total amount of sold items over different    |
+|      |types of combinations of customers based on selected groups of marital status, education status, sales price,|
+|      |and different combinations of state and sales profit.                                                        |
+| 4    |Product Returns Analysis: Find all items that were sold in stores in a given month and year and were         |
+|      |returned in the next six months and re-purchased by the returning customer afterwards through the web sales  |
+|      |channel in the next three years                                                                              |
+| 5    |Over Priced Items Sales' Analysis: List top 10 states in descending order with at least 10 customers who     |
+|      |during a given month bought products with the price tag at least 20% higher than the average price of the    |
+|      |products in the same category.                                                                               |
+
+## Performance Results (out of box setup)
+The exeuction time in seconds for each of the above five queries is listed below for out of box setup. 
+
+### Dataset 50 GB
+
+| Q#   | Hive (Seconds) | Redshift (Seconds) |
+| -----| ---------------|--------------------|
+| 1    | 691            | 4.69               |
+| 2    | 301            | 3.00               |
+| 3    | 659            | 9.01               |
+| 4    | 612            | 3.66               |
+| 5    | 346            | 4.15               |
+
+### Dataset 500 GB
+
+| Q#   | Hive (Seconds) | Redshift (Seconds) |
+| -----| ---------------|--------------------|
+| 1    | 4701           |  4.71              |
+| 2    | 2215           | 19.18              |
+| 3    | 4285           | 14.52              |
+| 4    | 4563           |  8.12              |
+| 5    | 1639           | 22.52              |
+
+
+For both datasets Redshift performed much better, compared to Hive, and it is due the query execution engines. Redshift is optimized for analytics workload. Redshift query engine generates C++ code, consisting of steps, segments and streams, to be executed by each compute node. In case of Hive, each query, potentially, results in multiple map-reduce jobs. Each map-reduce job spawns jvm and this results in significantly reduced execution performance. 
+
+## Performance Improvements
+The exeuction time in seconds for each of the above five queries is listed below for out of box setup. 
+
+
+
+
+
+
+
+
+
 
 
 ## Conclusions
