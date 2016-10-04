@@ -69,8 +69,12 @@ The exeuction time in seconds for each of the above five queries is listed below
 For both datasets Redshift performed much better, compared to Hive, and it is due the query execution engines. Redshift is optimized for analytics workload. Redshift query engine generates C++ code, consisting of steps, segments and streams, to be executed by each compute node. In case of Hive, each query, potentially, results in multiple map-reduce jobs. Each map-reduce job spawns jvm and this results in significantly reduced execution performance. 
 
 ## Performance Improvements
-The exeuction time in seconds for each of the above five queries is listed below for out of box setup. 
 
+### Hive
+In case of Hive, spark-sql was used to improve performance. spark-sql works with Hive metastore, is compatible with HIVE-QL and it uses spark libraries, RDDs and in memory way of execution of spark. 
+
+### Redshift 
+Two queries (Customer purchase behavior analysis and Market basket analysis) were analyzed further using 'Explain sql-statement'. It gives the query plan of execution. DS_BCAST_BOTH step was noted due to join on web_clickstreams & item in case of query1. This results in data movement (to compute nodes) during query exeuction, and is an expensive step. In order to avoid this run-time data movement, Redshift recomments usage of 'distkey' (KEY style of distribution). Hence item_sk field is defined as 'distkey' on all the three tables item, store_sales and web_clickstreams. Once, distkey is defined, Redshit, during data load operation, co-locates the rows with matching values of distkey (item_sk) in this case. So item, store_sales rows with matching item_sk and item, web_clickstreams rows with matching item_sk are located together on compute nodes during data load. At run time when a query joins store_sales, item on item_sk, now, no data movement happens. 
 
 
 
