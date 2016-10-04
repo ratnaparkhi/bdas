@@ -110,5 +110,3 @@ With this in mind following use cases are identified.
 | Massive amount data (many PBs), no vendor lock-in     | Hive       | Facebook, Sears and companies with existing     | 
 | in-house data due to regulatory reasons               |            | big data infrastructure and staff               |
 
-
-
