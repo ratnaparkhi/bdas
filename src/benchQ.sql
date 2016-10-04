@@ -1,14 +1,14 @@
--- Q1 (q09) 
--- TASK:
--- Aggregate total amount of sold items over different given types of combinations of 
--- customers based on selected groups of marital status, education status, sales price  and   
--- different combinations of state and sales profit.
--- this is set to avoid Execution failed with exit status: 3 
+-- Query 1  
+-- Customer Demographics and sales analysis. 
+-- What is the Aggregate total amount of sold items over different types of 
+-- combinations of customers based on selected groups of marital status, education status, 
+-- sales price  and different combinations of state and sales profit.
+
+-- Note: this is set to avoid Execution failed with exit status: 3 
 set hive.auto.convert.join = false; 
 
 SELECT SUM(ss1.ss_quantity)
 FROM store_sales ss1, date_dim dd, customer_address ca1 , store s, customer_demographics cd
--- select date range
 WHERE ss1.ss_sold_date_sk = dd.d_date_sk
 AND dd.d_year=2001
 AND ss1.ss_addr_sk = ca1.ca_address_sk
@@ -61,12 +61,16 @@ AND
   )
 );
 
--- Q2 (q12) 
--- TASK:
+-- Query 2  
+-- Customer Purchase behavior analysis: 
 -- Find all customers who viewed items of a given category on the web
--- in a given month and year that was followed by an in-store purchase of an item from the same category in the three
--- consecutive months.
+-- in a given month and year that was followed by an in-store purchase of an item from the 
+-- same category in the three consecutive months.
 
+-- Create two relations webInRange (join web_clickstreams, item on item_sk) and 
+-- storeInRange (join store_sales and item on item_sk)
+-- Join these two and then select the customers. 
+ 
 SELECT DISTINCT wcs_user_sk -- Find all customers
 FROM
 ( -- web_clicks viewed items in date range with items from specified categories
@@ -95,11 +99,9 @@ WHERE wcs_user_sk = ss_customer_sk
 AND wcs_click_date_sk < ss_sold_date_sk -- buy AFTER viewed on website
 ORDER BY wcs_user_sk;
 
---CLUSTER BY instead of ORDER BY does not work to achieve global ordering. e.g. 2 reducers: first reducer will write keys 0,2,4,6.. into file 000000_0 and reducer 2 will write keys 1,3,5,7,.. into file 000000_1.concatenating these files does not produces a deterministic result if number of reducer changes.
---Solution: parallel "order by" as non parallel version only uses a single reducer and we cant use "limit"
-
--- Q3 (q21) 
--- Get tll items that were sold in stores in a given month
+-- Query 3
+-- Product Returns analysis: 
+-- Get all items that were sold in stores in a given month
 -- and year and which were returned in the next 6 months and re-purchased by
 -- the returning customer afterwards through the web sales channel in the 
 -- following three years. For those items, compute the total quantity sold 
@@ -177,16 +179,16 @@ ORDER BY
   part_s.s_store_name
 LIMIT 100;
 
--- Q4 (q07) 
--- TASK:
+-- Query 4
+-- Sales of Over Priced Items:  
 -- List top 10 states in descending order with at least 10 customers who during
 -- a given month bought products with the price tag at least 20% higher than the
 -- average price of products in the same category.
 
--- 
--- Create helper table: items with 20% higher then avg prices of product from same category
+-- Create helper table having items with price tag at least 20% higher than the average 
+-- price of products in the same category."
+
 DROP TABLE IF EXISTS q07HigherPriceItems;
--- "price tag at least 20% higher than the average price of products in the same category."
 
 CREATE TABLE q07HigherPriceItems AS
 SELECT k.i_item_sk
@@ -199,11 +201,11 @@ FROM item k,
   GROUP BY j.i_category
 ) avgCategoryPrice
 WHERE avgCategoryPrice.i_category = k.i_category
-AND k.i_current_price > avgCategoryPrice.avg_price
-;
+AND k.i_current_price > avgCategoryPrice.avg_price;
 
 -- describe q07HigherPriceItems;
 -- select * from q07HigherPriceItems limit 100;
+-- (TBD) cannot use "ss_item_sk IN ()". Hive only supports a single "IN" subquery per SQL statement.
 
 SELECT
   ca_state,
@@ -216,7 +218,7 @@ FROM
 WHERE a.ca_address_sk = c.c_current_addr_sk
 AND c.c_customer_sk = s.ss_customer_sk
 AND ca_state IS NOT NULL
-AND ss_item_sk = q07HigherPriceItems.i_item_sk --cannot use "ss_item_sk IN ()". Hive only supports a single "IN" subquery per SQL statement.
+AND ss_item_sk = q07HigherPriceItems.i_item_sk 
 AND s.ss_sold_date_sk IN
 ( --during a given month
   SELECT d_date_sk
@@ -227,11 +229,15 @@ AND s.ss_sold_date_sk IN
 GROUP BY ca_state
 HAVING cnt >= 10 --at least 10 customers
 ORDER BY cnt DESC, ca_state --top 10 states in descending order
-LIMIT 10
-;
+LIMIT 10;
 
--- Q5 (q01) Items sold together (frequently i.e. more that 50 times), in certain store, 
+-- Query 5
+-- Market Basked Analysis:
+-- What are the items sold together (frequently i.e. more that 50 times), in certain store, 
 -- with specified categories & limit to 100.
+-- First create a relation soldTogether with pairs of items sold together using a self join 
+-- join it with item on item_sk and filter out for only required categories to make pairs
+
 select pairs.itm1, pairs.itm2, count(*) as cnt
 from 
   (select soldTogether.itm1, soldTogether.itm2
