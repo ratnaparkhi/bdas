@@ -1,4 +1,4 @@
--- Redshift performance improvement 
+- Redshift performance improvement 
 -- Check the 'explain' plan and improve performance. 
 -- Added distribution style KEY using distkey - item_sk 
 -- on three tables - item, store_sales, web_clickstreams 
@@ -140,81 +140,81 @@ CREATE  TABLE web_clickstreams
 
 -- 8
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_1.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_2.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_3.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_4.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_5.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_6.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_7.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy web_clickstreams from 's3://ppr-bdas-data/d50/web_clickstreams/web_clickstreams_8.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 
 -- 8 load item
 copy item from 's3://ppr-bdas-data/d50/item/item_1.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_2.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_3.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_4.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_5.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_6.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_7.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy item from 's3://ppr-bdas-data/d50/item/item_8.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 
 -- 8 load store_sales
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_1.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_2.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_3.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_4.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_5.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_6.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_7.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 copy store_sales from 's3://ppr-bdas-data/d50/store_sales/store_sales_8.dat' 
-credentials 'aws_access_key_id=AKIAIY4QKPT2TLNYNE5Q;aws_secret_access_key=FZ4EU0+eYVlIP3M6HJzF/NNyu3Dnl+mqWSXo381t';
+credentials 'aws_access_key_id=yourAccessKeyID;aws_secret_access_key=yourSecretAccessKey';
 
 
 
