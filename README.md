@@ -110,7 +110,11 @@ With this in mind following use cases are identified.
 | Massive amount data (many PBs), no vendor lock-in     | Hive       | Facebook, Sears and companies with existing     | 
 | in-house data due to regulatory reasons               |            | big data infrastructure and staff               |
 
-Given below are links to use real life use case for both Hive and Redshift
+
+Redshift cluster types, number of nodes and storage capacity are specified in the following link:
+http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes
+
+Links to real life use cases for both Hive and Redshift are given below:
 ### Hive usage examples:
 https://cwiki.apache.org/confluence/display/Hive/PoweredBy
 
