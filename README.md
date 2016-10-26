@@ -110,3 +110,17 @@ With this in mind following use cases are identified.
 | Massive amount data (many PBs), no vendor lock-in     | Hive       | Facebook, Sears and companies with existing     | 
 | in-house data due to regulatory reasons               |            | big data infrastructure and staff               |
 
+Given below are links to use real life use case for both Hive and Redshift
+### Hive usage examples:
+https://cwiki.apache.org/confluence/display/Hive/PoweredBy
+
+http://www.slideshare.net/royans/facebooks-petabyte-scale-data-warehouse-using-hive-and-hadoop
+
+### Redshift usage examples:
+https://aws.amazon.com/solutions/case-studies/all/
+
+http://www.slideshare.net/AmazonWebServices/uses-and-best-practices-for-amazon-redshift
+
+http://www.slideshare.net/JieLi4/amazon-redshift-at-pinterest
+
+
